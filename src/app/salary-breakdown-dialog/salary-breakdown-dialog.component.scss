@@ -1,0 +1,120 @@
+.ctc-layout {
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 800px;
+    margin: auto
+}
+
+.info-section {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px 24px;
+    background-color: #fcfcfc;
+    max-width: 600px;
+    margin-bottom: 24px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.label {
+    font-weight: 600;
+    color: #333;
+    width: 50%;
+}
+
+.value {
+    color: #444;
+    text-align: right;
+    width: 50%;
+}
+
+.ctc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        text-align: right;
+    }
+
+    th:first-child,
+    td:first-child {
+        text-align: left;
+    }
+
+    .subtotal {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+
+    .total-row {
+        background-color: #e3f2fd;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-button {
+    width: 160px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+
+    &:hover {
+        box-shadow: 0 6px 16px rgba(25, 118, 210, 0.5);
+        transform: translateY(-2px);
+    }
+
+    &:disabled {
+        background: #ccc;
+        color: #666;
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+}
+
+// Specific variants
+.close-button {
+    @extend .action-button;
+    background: linear-gradient(to right, #b53f3f, #f32121);
+
+    &:hover {
+        background: linear-gradient(to right, #9f3030, #d21919);
+    }
+}
+
+.download-button {
+    @extend .action-button;
+    background: linear-gradient(to right, #3f51b5, #2196f3);
+
+    &:hover {
+        background: linear-gradient(to right, #303f9f, #1976d2);
+    }
+}
+
+.logic-button {
+    @extend .action-button;
+    background: linear-gradient(to right, #d4c647, #f3de21);
+    color: #333;
+
+    &:hover {
+        background: linear-gradient(to right, #9f9830, #d2cf19);
+    }
+}

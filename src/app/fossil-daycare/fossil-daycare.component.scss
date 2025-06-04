@@ -1,0 +1,125 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  max-width: 100%;
+  margin: auto;
+  background: linear-gradient(120deg, #e3edf7, #f8f9fb);
+}
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.welcome-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 30px;
+  width: 60%;
+  height: 100%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.title {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.subtitle {
+  font-size: 16px;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.form-actions {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  .calculate-button {
+    width: 100%;
+    padding: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    background: linear-gradient(to right, #3f51b5, #2196f3);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+
+    &:hover {
+      background: linear-gradient(to right, #303f9f, #1976d2);
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.5);
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      background: #ccc;
+      color: #666;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  }
+
+  .reset-button {
+    width: 100%;
+    padding: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    background: linear-gradient(to right, #b53f3f, #f32121);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+
+    &:hover {
+      background: linear-gradient(to right, #9f3030, #d21919);
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.5);
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      background: #ccc;
+      color: #666;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.center-div {
+  text-align: center;
+}

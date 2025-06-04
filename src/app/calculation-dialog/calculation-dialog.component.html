@@ -1,0 +1,104 @@
+<h2 mat-dialog-title>CTC Calculation Breakdown</h2>
+<mat-dialog-content>
+    <table class="logic-table">
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Calculation Logic</th>
+                <th>Value (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Basic Salary (Monthly)</td>
+                <td>40% of CTC ÷ 12</td>
+                <td>{{ data.basicSalary | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>Level Flexi (Monthly)</td>
+                <td>Total Monthly Excluding PF/Gratuity - (Basic Salary + HRA + Statutory Bonus + Lunch Allowance +
+                    Education Allowance + Phone/Internet Allowance + Vehicle Maintenance + Leave Travel Allowance)</td>
+                <td>{{ data.levelFlexi | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>HRA (Monthly)</td>
+                <td>50% of Basic Salary (Monthly)</td>
+                <td>{{ data.hra | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>Statutory Bonus (Monthly)</td>
+                <td>21000 × 0.2</td>
+                <td>{{ data.bonus }}</td>
+            </tr>
+            <tr>
+                <td>Lunch Allowance (Monthly)</td>
+                <td>Fixed Value</td>
+                <td>2200</td>
+            </tr>
+            <tr>
+                <td>Education Allowance (Monthly)</td>
+                <td>Fixed Value</td>
+                <td>800</td>
+            </tr>
+            <tr>
+                <td>Leave Travel Allowance (Monthly)</td>
+                <td>Basic Salary (Monthly) ÷ 12</td>
+                <td>{{ data.lta | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>Phone/Internet Allowance (Monthly)</td>
+                <td>Fixed Value</td>
+                <td>1500</td>
+            </tr>
+            <tr>
+                <td>Vehicle Maintenance (Monthly)</td>
+                <td>Fixed Value</td>
+                <td>3600</td>
+            </tr>
+            <tr>
+                <td>Sub Total (Monthly)</td>
+                <td>(Sub Total CTC (Annual) - (PF + Gratuity + Festive Allowance)) ÷ 12</td>
+                <td>{{ data.monthlyTotalExcl | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>Sub Total (Annual)</td>
+                <td>Sub Total CTC (Annual) - (PF + Gratuity + Festive Allowance)</td>
+                <td>{{ data.annualTotalExcl | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>Provident Fund - Company Contribution (Annual)</td>
+                <td>(12% of Basic Salary (Monthly)) × 12</td>
+                <td>{{ data.pf | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>Gratuity (Annual)</td>
+                <td>(Basic Salary (Monthly) × 15) ÷ 26</td>
+                <td>{{ data.gratuity | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>Festive Allowance (Annual)</td>
+                <td>Fixed Value</td>
+                <td>4500</td>
+            </tr>
+            <tr>
+                <td>Sub Total CTC (Annual)</td>
+                <td>CTC ÷ 1.12</td>
+                <td>{{ data.annualSubTotal | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>Sales Incentive (Annual)</td>
+                <td>12% of Sub Total CTC (Annual)</td>
+                <td>{{ data.salesIncentive | number:'1.0-0' }}</td>
+            </tr>
+            <tr>
+                <td>Total CTC (Annual)</td>
+                <td>Sub Total CTC (Annual) + Sales Incentive (Annual)</td>
+                <td>{{ data.totalCtc | number:'1.0-0' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-raised-button class="close-button" mat-dialog-close>Close</button>
+</mat-dialog-actions>
