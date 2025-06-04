@@ -50,6 +50,7 @@ button[mat-button] {
     font-family: 'Segoe UI', sans-serif;
     font-size: 14px;
     color: #333;
+    table-layout: auto;
 }
 
 .logic-table th {
@@ -92,4 +93,76 @@ button[mat-button] {
     padding: 16px;
     font-size: 14px;
     color: #333;
+}
+
+@media (max-width: 768px) {
+    mat-dialog-title {
+        font-size: 16px;
+        padding: 12px 16px 0;
+        text-align: center;
+    }
+
+    mat-dialog-content {
+        font-size: 13px;
+        padding: 12px;
+    }
+
+    ul li {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    ul li strong {
+        min-width: 160px;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .logic-table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+        white-space: normal;
+    }
+
+    .logic-table th,
+    .logic-table td {
+        padding: 8px;
+    }
+
+    mat-dialog-actions {
+        flex-direction: column;
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .close-button {
+        width: 100%;
+        font-size: 13px;
+        padding: 12px;
+    }
+
+    .detail-content {
+        padding: 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    mat-dialog-title {
+        font-size: 15px;
+    }
+
+    mat-dialog-content {
+        font-size: 12px;
+    }
+
+    .logic-table {
+        font-size: 12px;
+    }
+
+    .close-button {
+        font-size: 12px;
+        padding: 10px;
+    }
 }

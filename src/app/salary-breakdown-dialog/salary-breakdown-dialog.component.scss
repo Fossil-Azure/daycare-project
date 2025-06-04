@@ -118,3 +118,68 @@
         background: linear-gradient(to right, #9f9830, #d2cf19);
     }
 }
+
+@media (max-width: 768px) {
+    .ctc-layout {
+        padding: 0 12px;
+        max-width: 100%;
+    }
+
+    .info-section {
+        padding: 12px 16px;
+        max-width: 100%;
+    }
+
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 12px;
+
+        .label,
+        .value {
+            width: 100%;
+            text-align: left;
+        }
+    }
+
+    .ctc-table {
+        font-size: 13px;
+
+        th,
+        td {
+            padding: 6px 8px;
+        }
+
+        .total-row {
+            font-size: 1rem;
+        }
+    }
+
+    .action-buttons {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .action-button {
+        width: 100%;
+        font-size: 13px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ctc-table {
+        font-size: 12px;
+
+        th,
+        td {
+            padding: 5px 6px;
+        }
+    }
+
+    .action-button {
+        font-size: 12px;
+        padding: 10px;
+    }
+}

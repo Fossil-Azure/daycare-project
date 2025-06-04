@@ -123,3 +123,59 @@
 .center-div {
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .welcome-card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+
+    .calculate-button,
+    .reset-button {
+      width: 100%;
+      padding: 16px;
+      font-size: 14px;
+    }
+  }
+
+  .center-div img {
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .form-actions {
+
+    .calculate-button,
+    .reset-button {
+      font-size: 13px;
+    }
+  }
+}
