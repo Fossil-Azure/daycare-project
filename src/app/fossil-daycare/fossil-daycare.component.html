@@ -14,36 +14,57 @@
         <mat-form-field appearance="outline">
           <mat-label>Full Name</mat-label>
           <input matInput formControlName="name" required />
+          @if (employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched) {
+            <mat-error>Please enter a valid name</mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Qualification</mat-label>
           <input matInput formControlName="qualification" required />
+          @if (employeeForm.get('qualification')?.invalid && employeeForm.get('qualification')?.touched) {
+            <mat-error>Please enter a valid qualification</mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Designation</mat-label>
           <input matInput formControlName="designation" required />
+          @if (employeeForm.get('designation')?.invalid && employeeForm.get('designation')?.touched) {
+            <mat-error>Please enter a valid designation</mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Grade</mat-label>
           <input matInput formControlName="grade" required />
+          @if (employeeForm.get('grade')?.invalid && employeeForm.get('grade')?.touched) {
+            <mat-error>Please enter a valid grade</mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
           <input matInput formControlName="location" required />
+          @if (employeeForm.get('location')?.invalid && employeeForm.get('location')?.touched) {
+            <mat-error>Please enter a valid location</mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Total Years of Experience</mat-label>
           <input matInput type="number" formControlName="experience" required />
+          @if (employeeForm.get('experience')?.invalid && employeeForm.get('experience')?.touched) {
+            <mat-error>Please enter a valid experience</mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>CTC (₹)</mat-label>
           <input matInput type="number" formControlName="ctc" required />
+          @if (employeeForm.get('ctc')?.invalid && employeeForm.get('ctc')?.touched) {
+            <mat-error>Please enter a valid CTC</mat-error>
+          }
         </mat-form-field>
 
         <div class="form-actions">
