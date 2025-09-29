@@ -8,6 +8,7 @@ import {
 import { CalculationDialogComponent } from '../calculation-dialog/calculation-dialog.component';
 import jsPDF from 'jspdf';
 import autoTable, { RowInput } from 'jspdf-autotable';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-salary-breakdown-dialog',
@@ -219,11 +220,23 @@ export class SalaryBreakdownDialogComponent {
       [`Sales Incentive @ 100% Achievement`, , this.data.incentive],
       [
         // `Total CTC`, , this.data.totalCtc,
-        { content: 'Total CTC', styles: { fontStyle: 'bold', textColor: 255, fillColor: [22, 160, 133] } },
+        {
+          content: 'Total CTC',
+          styles: {
+            fontStyle: 'bold',
+            textColor: 255,
+            fillColor: [22, 160, 133],
+          },
+        },
         { content: ``, styles: { fillColor: [22, 160, 133] } },
         {
           content: `${this.data.totalCtc.toLocaleString()}`,
-          styles: { fontStyle: 'bold', halign: 'right', textColor: 255, fillColor: [22, 160, 133] },
+          styles: {
+            fontStyle: 'bold',
+            halign: 'right',
+            textColor: 255,
+            fillColor: [22, 160, 133],
+          },
         },
       ],
     ].map((row: any[]) => [
@@ -274,6 +287,31 @@ export class SalaryBreakdownDialogComponent {
         resolve(canvas.toDataURL('image/png'));
       };
       img.onerror = (err) => reject(err);
+    });
+  }
+
+  downloadCTCJPEG() {
+    const element = document.getElementById('ctc-export');
+    if (!element) return;
+
+    element.style.display = 'block'; // show only for capture
+
+    html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+      scrollX: 0,
+      scrollY: -window.scrollY,
+      windowWidth: element.scrollWidth,
+      windowHeight: element.scrollHeight,
+    }).then((canvas) => {
+      const jpegData = canvas.toDataURL('image/jpeg', 1.0);
+
+      const link = document.createElement('a');
+      link.href = jpegData;
+      link.download = `CTC_Breakdown_${this.data.name.replace(/\s/g, '_')}.jpg`;
+      link.click();
+
+      element.style.display = 'none'; // hide again
     });
   }
 }
