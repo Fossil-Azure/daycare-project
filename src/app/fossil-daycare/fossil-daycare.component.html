@@ -122,6 +122,7 @@
             color="primary"
             type="submit"
             [disabled]="employeeForm.invalid"
+            style="color: white"
           >
             Start Calculation
           </button>
@@ -132,6 +133,7 @@
             color="primary"
             type="button"
             (click)="onReset()"
+            style="color: white"
           >
             Reset Form
           </button>
@@ -164,7 +166,9 @@
 
             <div class="header-text">
               <div class="name">{{ breakdownData.name }}</div>
-              <div class="sub-info">{{ breakdownData.designation }} ({{ breakdownData.entity }})</div>
+              <div class="sub-info">
+                {{ breakdownData.designation }} ({{ breakdownData.entity }})
+              </div>
 
               <div class="header-chips">
                 <span class="meta-chip">
@@ -218,8 +222,8 @@
           </div>
         </mat-card-content>
         <div *ngIf="!calculationValid" class="calculation-warning">
-          ⚠ Calculation mismatch detected — adjust Basic/HRA and Recalculate
-          before exporting.
+          ⚠ Calculation mismatch detected <br>(Adjust Basic/HRA and Recalculate
+          before exporting)
         </div>
       </div>
       <div class="edit-percent-box" *ngIf="editPercentagesMode">
