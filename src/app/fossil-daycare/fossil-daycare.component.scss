@@ -1,181 +1,228 @@
+/* ---------- GLOBAL LAYOUT ---------- */
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
   min-height: 100vh;
-  max-width: 100%;
-  margin: auto;
   background: linear-gradient(120deg, #e3edf7, #f8f9fb);
 }
 
+.center-div {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ---------- TEXT STYLES ---------- */
 .title {
-  font-size: 26px;
-  font-weight: bold;
-  color: #333;
-  margin: 0;
-}
-
-.subtitle {
-  font-size: 14px;
-  color: #777;
-  margin-top: 4px;
-}
-
-.welcome-card {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 30px;
-  width: 60%;
-  height: 100%;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.title {
-  margin-top: 20px;
   font-size: 24px;
   font-weight: 600;
   color: #1976d2;
+  margin: 16px 0 4px;
 }
 
 .subtitle {
   font-size: 16px;
-  margin-bottom: 2rem;
   color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- FORM CARD ---------- */
+.welcome-card {
+  width: 50%;
+  height: 80%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255,255,255,1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
+/* ---------- ACTION BUTTONS ---------- */
 .form-actions {
   margin-top: 5px;
   display: flex;
   justify-content: center;
   gap: 20px;
-
-  .calculate-button {
-    width: 100%;
-    padding: 25px;
-    font-size: 16px;
-    font-weight: 400;
-    transition: all 0.3s ease;
-    background: linear-gradient(to right, #3f51b5, #2196f3);
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
-
-    &:hover {
-      background: linear-gradient(to right, #303f9f, #1976d2);
-      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.5);
-      transform: translateY(-2px);
-    }
-
-    &:disabled {
-      background: #ccc;
-      color: #666;
-      box-shadow: none;
-      cursor: not-allowed;
-    }
-  }
-
-  .reset-button {
-    width: 100%;
-    padding: 25px;
-    font-size: 16px;
-    font-weight: 400;
-    transition: all 0.3s ease;
-    background: linear-gradient(to right, #b53f3f, #f32121);
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
-
-    &:hover {
-      background: linear-gradient(to right, #9f3030, #d21919);
-      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.5);
-      transform: translateY(-2px);
-    }
-
-    &:disabled {
-      background: #ccc;
-      color: #666;
-      box-shadow: none;
-      cursor: not-allowed;
-    }
-  }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.calculate-button,
+.reset-button {
+  width: 100%;
+  padding: 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.center-div {
-  text-align: center;
+.calculate-button {
+  background: linear-gradient(to right, #3f51b5, #2196f3);
+}
+.calculate-button:hover {
+  background: linear-gradient(to right, #303f9f, #1976d2);
+  transform: translateY(-2px);
 }
 
+.reset-button {
+  background: linear-gradient(to right, #b53f3f, #f32121);
+}
+.reset-button:hover {
+  background: linear-gradient(to right, #9f3030, #d21919);
+  transform: translateY(-2px);
+}
+
+.calculate-button:disabled,
+.reset-button:disabled {
+  background: #ccc !important;
+  color: #666 !important;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ---------- RESULT CARD ---------- */
+.result-card {
+  margin-top: 20px;
+  border-radius: 14px;
+  background: white;
+  padding-bottom: 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+/* ---------- HEADER ---------- */
+.result-header {
+  padding: 16px 12px;
+  display: flex;
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  gap: 16px;
+}
+
+.header-logo {
+  height: 45px;
+  object-fit: contain;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header-text .name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.header-text .sub-info {
+  font-size: 14px;
+  color: #666;
+}
+
+.header-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.meta-chip {
+  background: #f2f4f7;
+  border: 1px solid #d9d9d9;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- TABLE ---------- */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.ctc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.ctc-table th,
+.ctc-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: right;
+  font-size: 13.5px;
+}
+.ctc-table th:first-child,
+.ctc-table td:first-child {
+  text-align: left;
+}
+.total-row {
+  background: #e3f2fd;
+  font-weight: 600;
+}
+
+/* ---------- EDIT BASIC/HRA BOX ---------- */
+.edit-percent-box {
+  margin: 16px 8px;
+  padding: 12px 14px;
+  background: #f6f8fc;
+  border: 1px solid #d8dfea;
+  border-radius: 10px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- FOOTER ACTION BUTTONS ---------- */
+.result-actions,
+.export-bar {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.action-btn,
+.export-btn {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Button Themes */
+.primary { background:#0052cc; color:#fff; }
+.secondary { background:#fff; border:1px solid #cdd4df; }
+.neutral { background:#f7f9fb; border:1px solid #d7dde7; }
+.danger { background:#ffe8e8; border:1px solid #f5bdbd; color:#b40000; }
+
+.calculation-warning {
+  color:#b40000;
+  margin-top: 6px;
+  text-align:center;
+}
+
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
-  .welcome-card {
-    width: 90%;
-    padding: 20px;
-  }
-
-  .title {
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .subtitle {
-    font-size: 14px;
-    text-align: center;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .form-actions {
-    flex-direction: column;
-    gap: 10px;
-
-    .calculate-button,
-    .reset-button {
-      width: 100%;
-      padding: 16px;
-      font-size: 14px;
-    }
-  }
-
-  .center-div img {
-    height: 50px;
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 18px;
-  }
-
-  .subtitle {
-    font-size: 13px;
-  }
-
-  .form-actions {
-
-    .calculate-button,
-    .reset-button {
-      font-size: 13px;
-    }
-  }
+  .welcome-card { width: 90%; padding: 20px; }
+  .result-header { flex-direction: column; }
 }

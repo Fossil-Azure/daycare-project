@@ -1,83 +1,282 @@
-<ngx-spinner bdColor="rgba(0,0,0,0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
-  <p style="color: white">Loading...</p>
+<ngx-spinner
+  bdColor="rgba(255,255,255,1)"
+  size="medium"
+  color="#1976d2"
+  type="square-jelly-box"
+  [fullScreen]="true"
+>
+  <p style="color: #1976d2; font-weight: bold; font-size: 28px">
+    Calculating...
+  </p>
 </ngx-spinner>
 
 <div class="container">
-  <mat-card class="welcome-card mat-elevation-z4">
+  <mat-card class="welcome-card mat-elevation-z4" *ngIf="!showResults">
     <div class="center-div">
       <img src="/assets/fossil_logo.png" height="70px" alt="Fossil Group" />
       <h2 class="title">CTC Salary Calculator</h2>
-      <p class="subtitle">Enter employee details to calculate salary components</p>
     </div>
     <mat-card-content>
-      <form [formGroup]="employeeForm" class="form-grid" (ngSubmit)="onSubmit()">
+      <form
+        [formGroup]="employeeForm"
+        class="form-grid"
+        (ngSubmit)="onSubmit()"
+      >
         <mat-form-field appearance="outline">
           <mat-label>Full Name</mat-label>
           <input matInput formControlName="name" required />
-          @if (employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched) {
-            <mat-error>Please enter a valid name</mat-error>
+          @if (employeeForm.get('name')?.invalid &&
+          employeeForm.get('name')?.touched) {
+          <mat-error>Please enter a valid name</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Qualification</mat-label>
           <input matInput formControlName="qualification" required />
-          @if (employeeForm.get('qualification')?.invalid && employeeForm.get('qualification')?.touched) {
-            <mat-error>Please enter a valid qualification</mat-error>
+          @if (employeeForm.get('qualification')?.invalid &&
+          employeeForm.get('qualification')?.touched) {
+          <mat-error>Please enter a valid qualification</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Entity</mat-label>
+          <mat-select formControlName="entity" required>
+            @for (entity of entities; track entity) {
+            <mat-option [value]="entity">{{ entity }}</mat-option>
+            }
+          </mat-select>
+          @if (employeeForm.get('entity')?.invalid &&
+          employeeForm.get('entity')?.touched) {
+          <mat-error>Please select an entity</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Designation</mat-label>
-          <input matInput formControlName="designation" required />
-          @if (employeeForm.get('designation')?.invalid && employeeForm.get('designation')?.touched) {
-            <mat-error>Please enter a valid designation</mat-error>
+          <mat-select formControlName="designation" required>
+            @for (designation of designations; track designation) {
+            <mat-option [value]="designation">{{ designation }}</mat-option>
+            }
+          </mat-select>
+          @if (employeeForm.get('designation')?.invalid &&
+          employeeForm.get('designation')?.touched) {
+          <mat-error>Please select a designation</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Grade</mat-label>
-          <input matInput formControlName="grade" required />
-          @if (employeeForm.get('grade')?.invalid && employeeForm.get('grade')?.touched) {
-            <mat-error>Please enter a valid grade</mat-error>
+          <mat-select formControlName="grade" required>
+            @for (grade of grades; track grade) {
+            <mat-option [value]="grade">{{ grade }}</mat-option>
+            }
+          </mat-select>
+          @if (employeeForm.get('grade')?.invalid &&
+          employeeForm.get('grade')?.touched) {
+          <mat-error>Please select a grade</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
           <input matInput formControlName="location" required />
-          @if (employeeForm.get('location')?.invalid && employeeForm.get('location')?.touched) {
-            <mat-error>Please enter a valid location</mat-error>
+          @if (employeeForm.get('location')?.invalid &&
+          employeeForm.get('location')?.touched) {
+          <mat-error>Please enter a valid location</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Total Years of Experience</mat-label>
           <input matInput type="number" formControlName="experience" required />
-          @if (employeeForm.get('experience')?.invalid && employeeForm.get('experience')?.touched) {
-            <mat-error>Please enter a valid experience</mat-error>
+          @if (employeeForm.get('experience')?.invalid &&
+          employeeForm.get('experience')?.touched) {
+          <mat-error>Please enter a valid experience</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>CTC (₹)</mat-label>
           <input matInput type="number" formControlName="ctc" required />
-          @if (employeeForm.get('ctc')?.invalid && employeeForm.get('ctc')?.touched) {
-            <mat-error>Please enter a valid CTC</mat-error>
+          @if (employeeForm.get('ctc')?.invalid &&
+          employeeForm.get('ctc')?.touched) {
+          <mat-error>Please enter a valid CTC</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Bonus (%)</mat-label>
+          <input matInput type="number" formControlName="bonus" required />
+          @if (employeeForm.get('bonus')?.invalid &&
+          employeeForm.get('bonus')?.touched) {
+          <mat-error>Please enter a valid Bonus</mat-error>
           }
         </mat-form-field>
 
         <div class="form-actions">
-          <button class="calculate-button" mat-raised-button color="primary" type="submit"
-            [disabled]="employeeForm.invalid" hint="Start Calculation">
+          <button
+            class="calculate-button"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="employeeForm.invalid"
+          >
             Start Calculation
           </button>
 
-          <button class="reset-button" mat-raised-button color="primary" type="reset">
+          <button
+            class="reset-button"
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onReset()"
+          >
             Reset Form
           </button>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
+  @if (showResults && breakdownData) {
+  <mat-card
+    class="result-card mat-elevation-z3"
+    *ngIf="showResults && breakdownData"
+  >
+    <form [formGroup]="employeeForm">
+      <div #salaryCard>
+        <div class="result-header">
+          <div class="header-left">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <img
+                src="/assets/fossil_logo.png"
+                alt="Fossil Group"
+                class="header-logo"
+              />
+            </div>
+
+            <div class="header-text">
+              <div class="name">{{ breakdownData.name }}</div>
+              <div class="sub-info">{{ breakdownData.designation }} ({{ breakdownData.entity }})</div>
+
+              <div class="header-chips">
+                <span class="meta-chip">
+                  <mat-icon>star</mat-icon> Grade {{ breakdownData.grade }}
+                </span>
+                <span class="meta-chip">
+                  <mat-icon>place</mat-icon> {{ breakdownData.location }}
+                </span>
+                <span class="meta-chip">
+                  <mat-icon>school</mat-icon> {{ breakdownData.qualification }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content style="padding: 0px 10px">
+          <div class="table-wrapper">
+            <table class="ctc-table">
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th class="num">Monthly</th>
+                  <th class="num">Annual</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (row of breakdownData.displayRows; track row.label) {
+                <tr [class.total-row]="row.isTotal">
+                  <td>{{ row.label }}</td>
+                  <td class="num">
+                    @if (row.monthly != null) {
+                    {{
+                      row.monthly | currency : "INR" : "symbol-narrow" : "1.0-0"
+                    }}
+                    }
+                  </td>
+                  <td class="num">
+                    @if (row.annual != null) {
+                    {{
+                      row.annual | currency : "INR" : "symbol-narrow" : "1.0-0"
+                    }}
+                    }
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </mat-card-content>
+        <div *ngIf="!calculationValid" class="calculation-warning">
+          ⚠ Calculation mismatch detected — adjust Basic/HRA and Recalculate
+          before exporting.
+        </div>
+      </div>
+      <div class="edit-percent-box" *ngIf="editPercentagesMode">
+        <mat-form-field appearance="outline" style="width: 160px">
+          <mat-label>Basic % of CTC</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="basicPct"
+            step="0.01"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 160px">
+          <mat-label>HRA % of Basic</mat-label>
+          <input matInput type="number" formControlName="hraPct" step="0.01" />
+        </mat-form-field>
+
+        <button class="action-btn primary" (click)="onSubmit()">
+          <mat-icon>refresh</mat-icon> Apply & Recalculate
+        </button>
+      </div>
+      <div class="result-actions">
+        <button class="action-btn secondary" (click)="toggleEditPercentages()">
+          <mat-icon>edit</mat-icon>
+          {{ editPercentagesMode ? "Close Edit" : "Edit Basic/HRA" }}
+        </button>
+
+        <button class="action-btn neutral" (click)="changeInputs()">
+          <mat-icon>refresh</mat-icon> Change Inputs
+        </button>
+
+        <button class="action-btn danger" (click)="onReset()">
+          <mat-icon>restart_alt</mat-icon> Reset Form
+        </button>
+      </div>
+
+      <div class="export-bar">
+        <button
+          class="export-btn primary"
+          (click)="downloadAsPDF(salaryCard)"
+          [disabled]="!calculationValid"
+        >
+          <mat-icon>picture_as_pdf</mat-icon>
+          Download PDF
+        </button>
+
+        <button
+          class="export-btn primary"
+          (click)="downloadAsJPEG(salaryCard)"
+          [disabled]="!calculationValid"
+        >
+          <mat-icon>image</mat-icon>
+          Download JPEG
+        </button>
+      </div>
+    </form>
+  </mat-card>
+  }
 </div>
